@@ -11,13 +11,16 @@ export default function defaultHeaderRenderer({
   label,
   sortBy,
   sortDirection,
+  styleName,
 }: HeaderRendererParams) {
   const showSortIndicator = sortBy === dataKey;
   const children = [
     <span
       className="ReactVirtualized__Table__headerTruncatedText"
       key="label"
-      title={label}>
+      title={label}
+      styleName={`header ${styleName || ''}`}
+    >
       {label}
     </span>,
   ];

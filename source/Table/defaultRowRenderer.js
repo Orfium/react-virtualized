@@ -6,7 +6,6 @@ import type {RowRendererParams} from './types';
  * Default row renderer for Table.
  */
 export default function defaultRowRenderer({
-  className,
   columns,
   index,
   key,
@@ -16,7 +15,8 @@ export default function defaultRowRenderer({
   onRowMouseOver,
   onRowRightClick,
   rowData,
-  style,
+  styleName,
+  ...rest
 }: RowRendererParams) {
   const a11yProps = {};
 
@@ -52,10 +52,11 @@ export default function defaultRowRenderer({
   return (
     <div
       {...a11yProps}
-      className={className}
       key={key}
       role="row"
-      style={style}>
+      styleName={`row ${styleName || ''}`}
+      {...rest}
+    >
       {columns}
     </div>
   );
